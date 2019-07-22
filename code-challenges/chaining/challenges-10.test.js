@@ -60,16 +60,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  const filtered = input.forEach( (arr) => {
+  let results = [];
+  input.forEach( (arr) => {
     let newArr = arr.filter( (num) => {
       return (typeof num === 'number' && num % 5 === 0)
     })
-    console.log(newArr);
-    newArr.map( (num) => {
+    let exp = newArr.map( (num) => {
       return Math.pow(2, num);
     })
+    results.push(exp);
   });
-  return filtered;
+  return results;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -154,7 +155,17 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-
+  let prevHeight = data[0].height;
+  let initialName = data[0].name;
+  let result =  data.reduce( (acc, curr) => {
+    if (parseInt(curr.height, 10) < parseInt(prevHeight,10)){
+      prevHeight = curr.height;
+      return acc = curr.name;
+    } else {
+      return acc;
+    }
+  }, initialName);
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
