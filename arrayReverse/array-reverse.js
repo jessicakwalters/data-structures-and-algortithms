@@ -5,3 +5,4 @@ function reverseArray(array) {
  }
   return reversed;
 }
+
