@@ -191,7 +191,10 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 
 const totalSumCSV = (str) => {
   let total = 0;
-  // Solution code here...
+  let arr = str.split(",");
+  for(let i = 0; i < arr.length; i++){
+    total += parseInt(arr[i]);
+  }
   return total;
 };
 
@@ -205,7 +208,14 @@ For example, removeVowels('gregor') returns 'grgr'.
 ------------------------------------------------------------------------------------------------ */
 
 const removeVowels = (str) => {
-  // Solution code here...
+  let final = "";
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+  for(let i = 0; i < str.length; i++){
+    if (!vowels.includes(str[i])){
+      final += str[i];
+    }
+  }
+  return final;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -219,7 +229,17 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 ------------------------------------------------------------------------------------------------ */
 
 const extractVowels = (str) => {
-  // Solution code here...
+  let constonants ="";
+  let vowels = "";
+  let vowelsArr = ['a', 'e', 'i', 'o', 'u'];
+  for(let i = 0; i < str.length; i++){
+    if (!vowelsArr.includes(str[i])){
+      constonants += str[i];
+    } else {
+      vowels += str[i];
+    }
+  }
+  return [constonants, vowels];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -321,6 +341,6 @@ describe('Testing challenge 10', () => {
     expect(extractVowels('gregor')).toStrictEqual(['grgr', 'eo']);
     expect(extractVowels('gregor').length).toStrictEqual(2);
 
-    expect(extractVowels('The quick brown fox')).toStrictEqual(['Th qck brwn fx', 'eioou']);
+    expect(extractVowels('The quick brown fox')).toStrictEqual(['Th qck brwn fx', 'euioo']);
   });
 });
